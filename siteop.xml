@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.4" type="plugin" group="system" method="upgrade">
+	<name>plg_system_siteop</name>
+	<author>CGOnline.dk</author>
+	<creationDate>January 2016</creationDate>
+	<copyright>Copyright (C) 2016 CGOnline.dk. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>info@cgonline.dk</authorEmail>
+	<authorUrl>www.cgonline.dk</authorUrl>
+	<version>1.2.0</version>
+	<description>PLG_SYSTEM_SITEOP_XML_DESCRIPTION</description>
+
+	<files>
+		<filename plugin="siteop">siteop.php</filename>
+		<filename>index.html</filename>
+		<folder>fields</folder>
+		<folder>helper</folder>
+		<folder>language</folder>
+		<folder>lib</folder>
+	</files>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_siteop.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_system_siteop.sys.ini</language>
+	</languages>
+
+	<!-- <updateservers>
+		<server type="extension" priority="2" name="SiteOp">http://xxx/updates/siteop/updates.xml</server>
+	</updateservers> -->
+	
+	<config>
+		<fields name="params" addfieldpath="plugins/system/siteop/fields">
+			<fieldset name="basic">
+				<field name="spacer_info" type="siteopinfo" default="" label="" description="" />
+			</fieldset>
+
+            <fieldset name="html" label="PLG_SYSTEM_SITEOP_TAB_HTML">
+                <field
+                        name="htmlRemoveComments"
+                        type="list"
+                        default="0"
+                        label="PLG_SYSTEM_SITEOP_FIELD_HTML_REMOVECOMMENTS_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_HTML_REMOVECOMMENTS_DESC">
+                            <option value="1">JYES</option>
+                            <option value="0">JNO</option>
+                </field>
+
+                <field
+                        name="htmlRemoveNewlines"
+                        type="list"
+                        default="0"
+                        label="PLG_SYSTEM_SITEOP_FIELD_HTML_REMOVENEWLINES_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_HTML_REMOVENEWLINES_DESC">
+                            <option value="1">JYES</option>
+                            <option value="0">JNO</option>
+                </field>
+
+                <field
+                    name="htmlTidy"
+                    type="list"
+                    default="0"
+                    label="PLG_SYSTEM_SITEOP_FIELD_HTML_TIDY_LBL"
+                    description="PLG_SYSTEM_SITEOP_FIELD_HTML_TIDY_DESC">
+                        <option value="1">JYES</option>
+                        <option value="0">JNO</option>
+                </field>
+
+                <field
+                        name="htmlAddcode"
+                        type="textarea"
+                        label="PLG_SYSTEM_SITEOP_FIELD_HTML_ADDCODE_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_HTML_ADDCODE_DESC" />
+            </fieldset>
+
+			<fieldset name="js" label="PLG_SYSTEM_SITEOP_TAB_JS">
+				<field
+						name="scriptAdd"
+						type="list"
+						default="0"
+						label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTADD_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTADD_DESC">
+                            <option value="1">JYES</option>
+                            <option value="0">JNO</option>
+				</field>
+
+				<field
+						name="scriptAddInline"
+						type="textarea"
+                        rows="10"
+                        label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTADDINLINE_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTADDINLINE_DESC" />
+
+				<field
+						name="scriptAddList"
+						type="textarea"
+                        rows="10"
+						label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTADDLIST_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTADDLIST_DESC" />
+
+				<field
+						name="scriptSpacer01"
+						label=""
+						hr="true"
+						type="spacer" />
+
+				<field
+						name="scriptRemove"
+						type="list"
+						default="0"
+						label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTREMOVE_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTREMOVE_DESC">
+                            <option value="1">JYES</option>
+                            <option value="0">JNO</option>
+				</field>
+
+				<field
+						name="scriptRemoveList"
+						type="textarea"
+                        rows="10"
+						label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTREMOVELIST_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTREMOVELIST_DESC" />
+
+				<field
+						name="scriptSpacer02"
+						label=""
+						hr="true"
+						type="spacer" />
+
+				<field
+						name="scriptCombine"
+						type="list"
+						default="none"
+						label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTCOMBINE_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTCOMBINE_DESC">
+                            <option value="none">PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTCOMBINE_OPT_NONE</option>
+                            <option value="all">PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTCOMBINE_OPT_ALL</option>
+                            <option value="ignore">PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTCOMBINE_OPT_IGNORE</option>
+                            <option value="files">PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTCOMBINE_OPT_FILES</option>
+				</field>
+
+				<field
+						name="scriptCombineList"
+						type="textarea"
+                        rows="10"
+						label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTCOMBINELIST_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTCOMBINELIST_DESC" />
+
+				<field
+						name="scriptMinify"
+						type="list"
+						default="0"
+						label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTMINIFY_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTMINIFY_DESC">
+                            <option value="1">JYES</option>
+                            <option value="0">JNO</option>
+				</field>
+
+                <field name="scriptCachetime"
+                       type="text"
+                       default="60"
+                       label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTCACHETIME_LBL"
+                       description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTCACHETIME_DESC" />
+
+			</fieldset>
+
+            <fieldset name="css" label="PLG_SYSTEM_SITEOP_TAB_CSS">
+                <field
+                        name="styleAdd"
+                        type="list"
+                        default="0"
+                        label="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEADD_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEADD_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                        name="styleAddInline"
+                        type="textarea"
+                        rows="10"
+                        label="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEADDINLINE_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEADDINLINE_DESC" />
+
+                <field
+                        name="styleAddList"
+                        type="textarea"
+                        rows="10"
+                        label="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEADDLIST_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEADDLIST_DESC" />
+
+                <field
+                        name="styleSpacer01"
+                        label=""
+                        hr="true"
+                        type="spacer" />
+
+                <field
+                        name="styleRemove"
+                        type="list"
+                        default="0"
+                        label="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEREMOVE_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEREMOVE_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                        name="styleRemoveList"
+                        type="textarea"
+                        rows="10"
+                        label="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEREMOVELIST_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEREMOVELIST_DESC" />
+
+                <field
+                        name="styleSpacer02"
+                        label=""
+                        hr="true"
+                        type="spacer" />
+
+                <field
+                        name="styleCombine"
+                        type="list"
+                        default="none"
+                        label="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLECOMBINE_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLECOMBINE_DESC">
+                    <option value="none">PLG_SYSTEM_SITEOP_FIELD_CSS_STYLECOMBINE_OPT_NONE</option>
+                    <option value="all">PLG_SYSTEM_SITEOP_FIELD_CSS_STYLECOMBINE_OPT_ALL</option>
+                    <option value="ignore">PLG_SYSTEM_SITEOP_FIELD_CSS_STYLECOMBINE_OPT_IGNORE</option>
+                    <option value="files">PLG_SYSTEM_SITEOP_FIELD_CSS_STYLECOMBINE_OPT_FILES</option>
+                </field>
+
+                <field
+                        name="styleCombineList"
+                        type="textarea"
+                        rows="10"
+                        label="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLECOMBINELIST_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLECOMBINELIST_DESC" />
+
+                <field
+                        name="styleMinify"
+                        type="list"
+                        default="0"
+                        label="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEMINIFY_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEMINIFY_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field name="styleCachetime"
+                       type="text"
+                       default="60"
+                       label="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLECACHETIME_LBL"
+                       description="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLECACHETIME_DESC" />
+
+            </fieldset>
+		</fields>
+	</config>
+</extension>
