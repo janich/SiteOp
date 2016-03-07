@@ -87,30 +87,31 @@ class SiteOpHelper
 			return $result;
 		}
 
-		foreach ($files as $pattern)
+		foreach ($sources as $entry => $data) 
 		{
-			foreach ($sources as $entry => $data) 
+			if (empty($entry)) {
+				continue;
+			}
+
+			$match = false;
+
+			if ($mode == 'all') {
+				$match = true;
+			}
+			else 
 			{
-				if (empty($entry)) {
-					continue;
-				}
-
-				$match = false;
-
-				if ($mode == 'all') {
-					$match = true;
-				}
-				else {
+				foreach ($files as $pattern)
+				{
 					$match |= self::stringMatch($entry, $pattern);
-
-					if ($mode == 'ignore') {
-						$match = !$match;
-					}
 				}
 
-				if ($match) {
-					$result[] = $entry;
+				if ($mode == 'ignore') {
+					$match = !$match;
 				}
+			}
+
+			if ($match) {
+				$result[] = $entry;
 			}
 		}
 
