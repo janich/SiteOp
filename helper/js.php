@@ -22,6 +22,9 @@ class SiteOpJSHelper extends SiteOpHelper
         // Add inline JS to header
         $this->addInline();
 
+		// Experimental for developers
+		$this->prioritize();
+		
         // Combine any JS files
         $this->combine();
     }
@@ -70,6 +73,45 @@ class SiteOpJSHelper extends SiteOpHelper
             $this->unsetFiles($this->doc->_scripts, $files);
         }
     }
+
+
+	// Experimental for developers
+	public function prioritize()
+	{
+		$prio   = (int)$this->params->get('scriptPrioritize', '1');
+        $list   = $this->params->get('scriptPrioritizeList', "*jquery.min.js\r\n*js/core*\r\n*jquery*\r\n*template.js\r\n*bootstrap.min.js*");
+
+        if ($prio)
+        {
+			$merge = array();
+
+			$input = $this->getArrayFromText($list);
+			$files = $this->parseFilelist($this->doc->_scripts, $input, 'only');
+
+			// Extract files
+			foreach ($files as $file)
+			{
+				if (isset($this->doc->_scripts[$file])) 
+				{
+					$merge[$file] = $this->doc->_scripts[$file];
+				}
+			}
+
+			// Unset prioritized files
+			$this->unsetFiles($this->doc->_scripts, $files);
+
+			$prioritized = array();
+			foreach ($input as $pattern) {
+				foreach ($merge as $file => $data) {
+					if (self::stringMatch($file, $pattern)) {
+						$prioritized[$file] = $data;
+					}
+				}
+			}
+			
+			$this->doc->_scripts = array_merge($prioritized, $this->doc->_scripts);
+		}
+	}
 
 
     public function combine()
