@@ -79,10 +79,22 @@ class SiteOpHTMLHelper extends SiteOpHelper
         }
 
         $config = array(
-            'indent'		=> true,
-            'output-xml'	=> true,
-            'input-xml'		=> true,
-            'wrap'			=> '2000'
+            'input-xml'				=> true,
+			'output-xhtml'          => true,
+			
+			'hide-comments'         => false,
+            'indent'                => true,
+            'doctype'               => 'omit',
+            
+            'wrap'					=> '2000',
+            'wrap-attributes'       => false,
+			'new-blocklevel-tags'	=> 'article aside audio details figcaption figure footer header hgroup nav section source summary temp track video',
+			'new-empty-tags'		=> 'command embed keygen source track wbr',
+			'new-inline-tags'		=> 'audio canvas command datalist embed keygen mark meter output progress time video wbr',
+			
+            'char-encoding'         => 'utf8',
+            'input-encoding'        => 'utf8',
+            'output-encoding'       => 'utf8'
         );
 
         $tidy = new tidy();
