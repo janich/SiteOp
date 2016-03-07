@@ -52,6 +52,7 @@ class PlgSystemSiteOp extends JPlugin
         require_once __DIR__ . '/lib/Minifier.php';
         require_once __DIR__ . '/lib/cssmin.php';
         require_once __DIR__ . '/lib/acompressor.php';
+		require_once __DIR__ . '/helper/siteop.php';
         require_once __DIR__ . '/helper/' . $type . '.php';
 
         $class = 'SiteOp' . strtoupper($type) . 'Helper';
