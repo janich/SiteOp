@@ -14,11 +14,11 @@ JFormHelper::loadFieldClass('textarea');
 
 class JFormFieldSiteopTextarea extends JFormFieldTextarea
 {
-    public $type = 'siteoptextarea';
+	public $type = 'siteoptextarea';
 
-    public function getInput()
-    {
-        JFactory::getDocument()->addStyleDeclaration('#' . $this->id . ' { font-family: monospace; height: 140px; width: 590px; max-width: 95%; color #111; } #' . $this->id . ':active, #' . $this->id . ':focus, #' . $this->id . ':hover { color: #000; }');
-        return parent::getInput();
-    }
+	public function getInput()
+	{
+		JFactory::getDocument()->addStyleDeclaration('#' . $this->id . ' { font-family: monospace; height: 140px; width: 590px; max-width: 95%; color #111; } #' . $this->id . ':active, #' . $this->id . ':focus, #' . $this->id . ':hover { color: #000; }');
+		return parent::getInput();
+	}
 }

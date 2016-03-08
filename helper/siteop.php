@@ -11,27 +11,27 @@ defined('_JEXEC') or die;
 
 class SiteOpHelper
 {
-    protected $params;
-    protected $cache_uri = '';
-    protected $cache_dir = '';
-    protected $cache_base = 'plg_system_siteop';
+	protected   $params;
+	protected   $cache_uri      = '';
+	protected   $cache_dir      = '';
+	protected   $cache_base     = 'plg_system_siteop';
 
 
-    public function __construct($params)
-    {
-        $this->params       = $params;
+	public function __construct($params)
+	{
+		$this->params = $params;
 
-        $this->app          = JFactory::getApplication();
-        $this->sess         = JFactory::getSession();
-        $this->doc          = JFactory::getDocument();
-        $this->root	        = JURI::root(true);
-        $this->root	        = '/';
+		$this->app  = JFactory::getApplication();
+		$this->sess = JFactory::getSession();
+		$this->doc  = JFactory::getDocument();
+		$this->root = JURI::root(true);
+		$this->root = '/';
 
-        $this->cache_uri    = JURI::root(true) . '/cache/'. $this->cache_base .'/';
-        $this->cache_dir    = JPATH_BASE .'/cache/'. $this->cache_base .'/';
+		$this->cache_uri = JURI::root(true) . '/cache/' . $this->cache_base . '/';
+		$this->cache_dir = JPATH_BASE . '/cache/' . $this->cache_base . '/';
 
-        $this->init();
-    }
+		$this->init();
+	}
 
 
 	public static function getArrayFromText($text = '', $separator = "\r\n")
@@ -52,29 +52,29 @@ class SiteOpHelper
 		foreach ($source as $entry => $data) {
 			foreach ($files as $pattern) {
 				if (self::stringMatch($entry, $pattern)) {
-					unset($source[ $entry ]);
+					unset($source[$entry]);
 				}
 			}
 		}
 	}
 
-    protected function stringMatch($source, $pattern)
-    {
+
+	protected function stringMatch($source, $pattern)
+	{
 		if (strpos($pattern, '/') === false) {
-			$pattern = '*/'. $pattern;
-		}
-		else if ($pattern{0} == '/' || $pattern{0} != '*') {
-			$pattern = '*'. $pattern;
+			$pattern = '*/' . $pattern;
+		} else if ($pattern{0} == '/' || $pattern{0} != '*') {
+			$pattern = '*' . $pattern;
 		}
 
 		$pattern = preg_quote($pattern, '/');
 		$pattern = str_replace('\*', '.*', $pattern);
-		$result = preg_match('/^' . $pattern . '$/i' , $source);
+		$result = preg_match('/^' . $pattern . '$/i', $source);
 
 		if (strpos($source, ".js") !== false) {
-		    //echo $result ." - ". str_pad($source, 20, " ") ." -- ". str_pad($pattern, 20, " ") ."\n";
+			//echo $result ." - ". str_pad($source, 20, " ") ." -- ". str_pad($pattern, 20, " ") ."\n";
 		}
-		
+
 		return $result;
 	}
 
@@ -87,8 +87,7 @@ class SiteOpHelper
 			return $result;
 		}
 
-		foreach ($sources as $entry => $data) 
-		{
+		foreach ($sources as $entry => $data) {
 			if (empty($entry)) {
 				continue;
 			}
@@ -98,10 +97,8 @@ class SiteOpHelper
 			if ($mode == 'all') {
 				$match = true;
 			}
-			else 
-			{
-				foreach ($files as $pattern)
-				{
+			else {
+				foreach ($files as $pattern) {
 					$match |= self::stringMatch($entry, $pattern);
 				}
 
@@ -119,8 +116,8 @@ class SiteOpHelper
 	}
 
 
-    private function init()
-    {
-        $this->doc->setGenerator('Joomla! CMS - Enhanced by CGOnline.dk');
-    }
+	private function init()
+	{
+		$this->doc->setGenerator('Joomla! CMS - Enhanced by CGOnline.dk');
+	}
 }

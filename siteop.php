@@ -20,20 +20,20 @@ jimport('joomla.filesystem.folder');
  */
 class PlgSystemSiteOp extends JPlugin
 {
-    public function onBeforeCompileHead()
-    {
-    	if (!$this->isValidRequest()) {
+	public function onBeforeCompileHead()
+	{
+		if (!$this->isValidRequest()) {
 			return;
 		}
 
 		$this->process('css');
-        $this->process('js');
+		$this->process('js');
 	}
 
 
 	public function onAfterRender()
 	{
-        if (!$this->isValidRequest()) {
+		if (!$this->isValidRequest()) {
 			return;
 		}
 
@@ -41,23 +41,23 @@ class PlgSystemSiteOp extends JPlugin
 	}
 
 
-    private function isValidRequest()
-    {
-        return (!JFactory::getApplication()->isAdmin() && JFactory::getDocument()->getType() === 'html');
-    }
+	private function isValidRequest()
+	{
+		return (!JFactory::getApplication()->isAdmin() && JFactory::getDocument()->getType() === 'html');
+	}
 
 
 	private function process($type = '')
 	{
-        require_once __DIR__ . '/lib/Minifier.php';
-        require_once __DIR__ . '/lib/cssmin.php';
-        require_once __DIR__ . '/lib/acompressor.php';
+		require_once __DIR__ . '/lib/Minifier.php';
+		require_once __DIR__ . '/lib/cssmin.php';
+		require_once __DIR__ . '/lib/acompressor.php';
 		require_once __DIR__ . '/helper/siteop.php';
-        require_once __DIR__ . '/helper/' . $type . '.php';
+		require_once __DIR__ . '/helper/' . $type . '.php';
 
-        $class = 'SiteOp' . strtoupper($type) . 'Helper';
+		$class = 'SiteOp' . strtoupper($type) . 'Helper';
 
-        $helper = new $class($this->params);
-        $helper->process();
+		$helper = new $class($this->params);
+		$helper->process();
 	}
 }

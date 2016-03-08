@@ -11,12 +11,12 @@ defined('_JEXEC') or die;
 
 class ACompressor
 {
-	protected   $type       = '';
-	protected   $hash       = '';
-	protected   $buffer     = '';
-	protected   $append     = '';
-	protected   $files      = array();
-	public      $minifier   = null;
+	protected   $type = '';
+	protected   $hash = '';
+	protected   $buffer = '';
+	protected   $append = '';
+	protected   $files = array();
+	public      $minifier = null;
 
 
 	public function __construct($type = '', $cache_dir = JPATH_CACHE, $cache_timeout = 15)
@@ -32,8 +32,8 @@ class ACompressor
 
 	public function addText($text = '')
 	{
-		$this->hash .= md5($text);
-		$this->append .= $text;
+		$this->hash     .= md5($text);
+		$this->append   .= $text;
 	}
 
 
@@ -43,33 +43,25 @@ class ACompressor
 		$uri    = $path;
 		$local  = false;
 
-		if (substr($path, 0, 2) == '//')
-		{
+		if (substr($path, 0, 2) == '//') {
 			// Remote file - probably from a cdn
-			$file   = 'http:' . $path;
-			$uri    = $file;
-		}
-		else if (substr($path, 0, 1) == '/')
-		{
+			$file = 'http:' . $path;
+			$uri = $file;
+		} else if (substr($path, 0, 1) == '/') {
 			// Local file
-			$file   = $this->sroot . $path;
-			$uri    = $path;
-			$local  = true;
-		}
-		else if (substr($path, 0, 4) == 'http')
-		{
+			$file = $this->sroot . $path;
+			$uri = $path;
+			$local = true;
+		} else if (substr($path, 0, 4) == 'http') {
 			// Remote file - Maybe a font or the likes?
-		}
-		else
-		{
+		} else {
 			// Assume file is relative to Joomla
-			$file   = $this->root . '/' . $path;
-			$uri    = $this->uri . '/' . $path;
-			$local  = true;
+			$file = $this->root . '/' . $path;
+			$uri = $this->uri . '/' . $path;
+			$local = true;
 		}
 
-		if ($local && JFile::exists($file))
-		{
+		if ($local && JFile::exists($file)) {
 			$this->hash .= filemtime($file);
 		}
 
@@ -114,12 +106,11 @@ class ACompressor
 		$this->combine();
 
 		if ($this->append) {
-			$this->buffer .= "\n/** Inline data: */\n". $this->append ."\n\n";
+			$this->buffer .= "\n/** Inline data: */\n" . $this->append . "\n\n";
 			$this->append = '';
 		}
 
-		if ($this->minifier)
-		{
+		if ($this->minifier) {
 			$this->minify();
 		}
 
@@ -133,7 +124,7 @@ class ACompressor
 			$content = $this->getFileContents($data);
 
 			if ($content !== false) {
-				$this->buffer .= "\n/** File: ". $data['uri'] ." */\n$content\n\n";
+				$this->buffer .= "\n/** File: " . $data['uri'] . " */\n$content\n\n";
 			}
 		}
 	}
@@ -142,18 +133,15 @@ class ACompressor
 	protected function minify()
 	{
 		if (is_object($this->minifier)) {
-            $class = get_class($this->minifier);
+			$class = get_class($this->minifier);
 
-			switch (strtolower($class))
-			{
+			switch (strtolower($class)) {
 				case 'cssmin':
 					$this->buffer = $this->minifier->run($this->buffer);
 					break;
 				default:
 			}
-		}
-		else if (is_array($this->minifier))
-		{
+		} else if (is_array($this->minifier)) {
 			$this->buffer = call_user_func($this->minifier, $this->buffer);
 		}
 	}
@@ -164,10 +152,10 @@ class ACompressor
 		$data = file_get_contents($file['file']);
 
 		if ($data !== false && $file['local']) {
-			$path    = dirname($file['uri']) . '/';
-			$search  = '#url\((?!\s*[\'"]?(?:https?:)?//)\s*([\'"])?#';
-			$replace = "url($1". $path;
-			$data    = preg_replace($search, $replace, $data);
+			$path = dirname($file['uri']) . '/';
+			$search = '#url\((?!\s*[\'"]?(?:https?:)?//)\s*([\'"])?#';
+			$replace = "url($1" . $path;
+			$data = preg_replace($search, $replace, $data);
 		}
 
 		return $data;

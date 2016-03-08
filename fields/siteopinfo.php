@@ -9,7 +9,7 @@
 
 defined('_JEXEC') or die;
 
-jimport('joomla.form.formfield');
+jimport('joomla.form.helper');
 
 class JFormFieldSiteopinfo extends JFormField
 {
@@ -17,45 +17,44 @@ class JFormFieldSiteopinfo extends JFormField
 
 	public function getInput()
 	{
+		JFactory::getDocument()->addStyleDeclaration('
+			.siteopinfo-container {
+				margin-left: 0px !important;
+			}
+			.siteopinfo {
+				box-sizing: border-box;
+				padding: 20px 50px;
+				display: inline-block;
+				box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+			}
+			.siteopinfo img {
+				float: left;
+				max-width: 200px;
+				margin: 25px 50px 0px 0px;
+			}
+			.siteopinfo dl {
+				float: left;
+				width: 310px;
+			}
+			.siteopinfo dt {
+				float: left;
+				clear: left;
+				width: 100px;
+			}
+			.siteopinfo dd {
+				float: left;
+				width: 200px;
+			}
+		');
+
+		JFactory::getDocument()->addScriptDeclaration('
+			jQuery(document).ready(function (){
+                jQuery(".siteopinfo").parent().addClass("siteopinfo-container");
+            });
+		');
+
 		return '
-            <style type="text/css">
-                .siteopinfo-container {
-                    margin-left: 0px !important;
-                }
-                .siteopinfo {
-                    box-sizing: border-box;
-                    padding: 20px 50px;
-                    display: inline-block;
-                    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-                }
-                .siteopinfo img {
-                    float: left;
-                    max-width: 200px;
-                    margin: 25px 50px 0px 0px;
-                }
-                .siteopinfo dl {
-                    float: left;
-                    width: 310px;
-                }
-                .siteopinfo dt {
-                    float: left;
-                    clear: left;
-                    width: 100px;
-                }
-                .siteopinfo dd {
-                    float: left;
-                    width: 200px;
-                }
-            </style>
-
-            <script type="text/javascript">
-                jQuery(document).ready(function (){
-                    jQuery(".siteopinfo").parent().addClass("siteopinfo-container");
-                });
-
-            </script>
-
-            <div class="siteopinfo">
+			<div class="siteopinfo">
                 <img src="../plugins/system/siteop/fields/logo.jpg" />
                 <dl>
                         <dt>Name</dt>		<dd>Site Optimisation</dd>
