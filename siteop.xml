@@ -195,7 +195,7 @@
 
 				<field name="scriptCachetime"
 					   type="text"
-					   default="60"
+					   default="10080"
 					   label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTCACHETIME_LBL"
 					   description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTCACHETIME_DESC" />
 
@@ -316,7 +316,7 @@
 
 				<field name="styleCachetime"
 					   type="text"
-					   default="60"
+					   default="10080"
 					   label="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLECACHETIME_LBL"
 					   description="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLECACHETIME_DESC" />
 
