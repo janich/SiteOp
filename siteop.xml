@@ -67,7 +67,9 @@
 
                 <field
                         name="htmlAddcode"
-                        type="textarea"
+                        type="siteopeditor"
+                        editor="codemirror|none"
+                        filter="raw"
                         label="PLG_SYSTEM_SITEOP_FIELD_HTML_ADDCODE_LBL"
                         description="PLG_SYSTEM_SITEOP_FIELD_HTML_ADDCODE_DESC" />
             </fieldset>
@@ -85,15 +87,16 @@
 
 				<field
 						name="scriptAddInline"
-						type="textarea"
-                        rows="10"
+                        type="siteopeditor"
+                        editor="codemirror|none"
+                        filter="raw"
                         label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTADDINLINE_LBL"
                         description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTADDINLINE_DESC" />
 
 				<field
 						name="scriptAddList"
-						type="textarea"
-                        rows="10"
+						type="siteoptextarea"
+                        filter="string"
 						label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTADDLIST_LBL"
                         description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTADDLIST_DESC" />
 
@@ -115,8 +118,8 @@
 
 				<field
 						name="scriptRemoveList"
-						type="textarea"
-                        rows="10"
+						type="siteoptextarea"
+                        filter="string"
 						label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTREMOVELIST_LBL"
                         description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTREMOVELIST_DESC" />
 
@@ -138,8 +141,8 @@
 
                 <field
                         name="scriptPrioritizeList"
-                        type="textarea"
-                        rows="10"
+                        type="siteoptextarea"
+                        filter="string"
                         label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTPRIORITIZELIST_LBL"
                         description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTPRIORITIZELIST_DESC" />
 
@@ -163,8 +166,8 @@
 
 				<field
 						name="scriptCombineList"
-						type="textarea"
-                        rows="10"
+						type="siteoptextarea"
+                        filter="string"
 						label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTCOMBINELIST_LBL"
                         description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTCOMBINELIST_DESC" />
 
@@ -199,15 +202,16 @@
 
                 <field
                         name="styleAddInline"
-                        type="textarea"
-                        rows="10"
+                        type="siteopeditor"
+                        editor="codemirror|none"
+                        filter="raw"
                         label="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEADDINLINE_LBL"
                         description="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEADDINLINE_DESC" />
 
                 <field
                         name="styleAddList"
-                        type="textarea"
-                        rows="10"
+                        type="siteoptextarea"
+                        filter="string"
                         label="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEADDLIST_LBL"
                         description="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEADDLIST_DESC" />
 
@@ -229,8 +233,8 @@
 
                 <field
                         name="styleRemoveList"
-                        type="textarea"
-                        rows="10"
+                        type="siteoptextarea"
+                        filter="string"
                         label="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEREMOVELIST_LBL"
                         description="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLEREMOVELIST_DESC" />
 
@@ -252,8 +256,8 @@
 
                 <field
                         name="stylePrioritizeList"
-                        type="textarea"
-                        rows="10"
+                        type="siteoptextarea"
+                        filter="string"
                         label="PLG_SYSTEM_SITEOP_FIELD_CSS_SCRIPTPRIORITIZELIST_LBL"
                         description="PLG_SYSTEM_SITEOP_FIELD_CSS_SCRIPTPRIORITIZELIST_DESC" />
 
@@ -277,8 +281,8 @@
 
                 <field
                         name="styleCombineList"
-                        type="textarea"
-                        rows="10"
+                        type="siteoptextarea"
+                        filter="string"
                         label="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLECOMBINELIST_LBL"
                         description="PLG_SYSTEM_SITEOP_FIELD_CSS_STYLECOMBINELIST_DESC" />
 
