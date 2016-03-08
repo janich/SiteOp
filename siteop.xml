@@ -126,7 +126,30 @@
 						hr="true"
 						type="spacer" />
 
-				<field
+                <field
+                        name="scriptPrioritize"
+                        type="list"
+                        default="0"
+                        label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTPRIORITIZE_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTPRIORITIZE_DESC">
+                            <option value="1">JYES</option>
+                            <option value="0">JNO</option>
+                </field>
+
+                <field
+                        name="scriptPrioritizeList"
+                        type="textarea"
+                        rows="10"
+                        label="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTPRIORITIZELIST_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_JS_SCRIPTPRIORITIZELIST_DESC" />
+
+                <field
+                        name="scriptSpacer03"
+                        label=""
+                        hr="true"
+                        type="spacer" />
+
+                <field
 						name="scriptCombine"
 						type="list"
 						default="none"
@@ -213,6 +236,29 @@
 
                 <field
                         name="styleSpacer02"
+                        label=""
+                        hr="true"
+                        type="spacer" />
+
+                <field
+                        name="stylePrioritize"
+                        type="list"
+                        default="0"
+                        label="PLG_SYSTEM_SITEOP_FIELD_CSS_SCRIPTPRIORITIZE_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_CSS_SCRIPTPRIORITIZE_DESC">
+                            <option value="1">JYES</option>
+                            <option value="0">JNO</option>
+                </field>
+
+                <field
+                        name="stylePrioritizeList"
+                        type="textarea"
+                        rows="10"
+                        label="PLG_SYSTEM_SITEOP_FIELD_CSS_SCRIPTPRIORITIZELIST_LBL"
+                        description="PLG_SYSTEM_SITEOP_FIELD_CSS_SCRIPTPRIORITIZELIST_DESC" />
+
+                <field
+                        name="styleSpacer03"
                         label=""
                         hr="true"
                         type="spacer" />

@@ -22,7 +22,7 @@ class SiteOpJSHelper extends SiteOpHelper
         // Add inline JS to header
         $this->addInline();
 
-		// Experimental for developers
+		// Prioritize JS load order
 		$this->prioritize();
 		
         // Combine any JS files
@@ -75,11 +75,10 @@ class SiteOpJSHelper extends SiteOpHelper
     }
 
 
-	// Experimental for developers
 	public function prioritize()
 	{
-		$prio   = (int)$this->params->get('scriptPrioritize', '1');
-        $list   = $this->params->get('scriptPrioritizeList', "*jquery.min.js\r\n*js/core*\r\n*jquery*\r\n*template.js\r\n*bootstrap.min.js*");
+		$prio   = (int)$this->params->get('scriptPrioritize', '0');
+        $list   = $this->params->get('scriptPrioritizeList', '');
 
         if ($prio)
         {

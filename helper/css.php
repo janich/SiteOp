@@ -21,6 +21,9 @@ class SiteOpCSSHelper extends SiteOpHelper
 
         // Add inline CSS to header
         $this->addInline();
+		
+		// Prioritize CSS load order
+		$this->prioritize();
 
         // Combine any CSS files
         $this->combine();
@@ -68,6 +71,43 @@ class SiteOpCSSHelper extends SiteOpHelper
         {
             $files = $this->getArrayFromText($list);
             $this->unsetFiles($this->doc->_styleSheets, $files);
+        }
+    }
+
+    public function prioritize()
+    {
+        $prio   = (int)$this->params->get('stylePrioritize', '0');
+        $list   = $this->params->get('stylePrioritizeList', '');
+
+        if ($prio)
+        {
+            $merge = array();
+
+            $input = $this->getArrayFromText($list);
+            $files = $this->parseFilelist($this->doc->_styleSheets, $input, 'only');
+
+            // Extract files
+            foreach ($files as $file)
+            {
+                if (isset($this->doc->_styleSheets[$file]))
+                {
+                    $merge[$file] = $this->doc->_styleSheets[$file];
+                }
+            }
+
+            // Unset prioritized files
+            $this->unsetFiles($this->doc->_styleSheets, $files);
+
+            $prioritized = array();
+            foreach ($input as $pattern) {
+                foreach ($merge as $file => $data) {
+                    if (self::stringMatch($file, $pattern)) {
+                        $prioritized[$file] = $data;
+                    }
+                }
+            }
+
+            $this->doc->_styleSheets = array_merge($prioritized, $this->doc->_styleSheets);
         }
     }
 
