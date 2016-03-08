@@ -35,6 +35,12 @@
 			</fieldset>
 
             <fieldset name="html" label="PLG_SYSTEM_SITEOP_TAB_HTML">
+
+                <field
+                        name="htmlSpacerTitle"
+                        type="spacer"
+                        label="PLG_SYSTEM_SITEOP_TITLE_HTML" />
+
                 <field
                         name="htmlRemoveComments"
                         type="list"
@@ -75,6 +81,12 @@
             </fieldset>
 
 			<fieldset name="js" label="PLG_SYSTEM_SITEOP_TAB_JS">
+
+                <field
+                        name="htmlSpacerTitle"
+                        type="spacer"
+                        label="PLG_SYSTEM_SITEOP_TITLE_JS" />
+
 				<field
 						name="scriptAdd"
 						type="list"
@@ -190,6 +202,12 @@
 			</fieldset>
 
             <fieldset name="css" label="PLG_SYSTEM_SITEOP_TAB_CSS">
+
+                <field
+                        name="htmlSpacerTitle"
+                        type="spacer"
+                        label="PLG_SYSTEM_SITEOP_TITLE_CSS" />
+
                 <field
                         name="styleAdd"
                         type="list"
