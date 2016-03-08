@@ -18,7 +18,7 @@ class JFormFieldSiteopEditor extends JFormFieldEditor
 
 	public function getInput()
 	{
-		JFactory::getDocument()->addStyleDeclaration('textarea + .CodeMirror { max-width: 600px; }');
+		JFactory::getDocument()->addStyleDeclaration('textarea + .CodeMirror { max-width: 600px; } textarea + .CodeMirror.CodeMirror-fullscreen { max-width: none; }');
 		return parent::getInput();
 	}
 }
